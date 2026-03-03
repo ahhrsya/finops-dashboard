@@ -47,7 +47,7 @@ export default function ServicesPage() {
                             />
                             <Tooltip
                                 contentStyle={chartConfig.tooltip.contentStyle}
-                                formatter={(v: number) => formatCost(v)}
+                                formatter={(v: any) => formatCost(v)}
                             />
                             <Bar
                                 dataKey="cost"

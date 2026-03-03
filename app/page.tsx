@@ -47,7 +47,7 @@ export default function DashboardPage() {
                                 />
                                 <Tooltip
                                     contentStyle={chartConfig.tooltip.contentStyle}
-                                    formatter={(v: number) => [formatCost(v), 'Cost']}
+                                    formatter={(v: any) => [formatCost(v), 'Cost']}
                                 />
                                 <Line
                                     type="monotone"
@@ -97,7 +97,7 @@ export default function DashboardPage() {
                                 </Pie>
                                 <Tooltip
                                     contentStyle={chartConfig.tooltip.contentStyle}
-                                    formatter={(v: number) => formatCost(v)}
+                                    formatter={(v: any) => formatCost(v)}
                                 />
                             </PieChart>
                         </ResponsiveContainer>
