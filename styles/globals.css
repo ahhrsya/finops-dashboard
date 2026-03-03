@@ -4,28 +4,26 @@
 
 @layer base {
   :root {
-    --background: 240 10% 2%;
+    --background: 0 0% 2%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3%;
+    --card: 0 0% 4%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 2%;
+    --popover: 0 0% 2%;
     --popover-foreground: 0 0% 98%;
-    --primary: 322 100% 50%;
-    /* Neon Magenta */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 10%;
+    --secondary: 0 0% 9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 5% 15%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
     --accent: 217 91% 60%;
-    /* Vibrant Blue */
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 84% 60%;
+    --destructive: 350 80% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5% 12%;
-    --input: 240 5% 12%;
-    --ring: 322 100% 50%;
-    --radius: 1.25rem;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
   }
 }
 
@@ -35,80 +33,35 @@
   }
 
   body {
-    @apply bg-[#000000] text-foreground overflow-x-hidden antialiased;
+    @apply bg-background text-foreground overflow-x-hidden antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-/* Animations */
-@keyframes alert-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  50% {
-    transform: scale(1.05);
-    opacity: 0.8;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-.animate-alert-pulse {
-  animation: alert-pulse 2s infinite;
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: fade-up 0.5s ease-out forwards;
-}
-
-/* Background Bloom */
+/* Background Bloom - Subtle & Modern */
 .bg-bloom {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background:
-    radial-gradient(circle at 10% 20%, rgba(255, 0, 128, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(0, 200, 255, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(100, 50, 255, 0.05) 0%, transparent 60%);
+  background: radial-gradient(circle at 50% -20%, rgba(26, 115, 232, 0.1) 0%, transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
 
-/* Premium Effects */
+/* Modern Glass Cards */
 .glass-card {
-  @apply bg-[#111318]/40 backdrop-blur-2xl border border-white/5;
+  @apply bg-white/[0.02] backdrop-blur-md border border-white/[0.05] shadow-sm;
 }
 
-.neon-glow-pink {
-  box-shadow: 0 0 20px rgba(255, 0, 128, 0.2);
+.glass-card:hover {
+  @apply bg-white/[0.04] border-white/[0.08] transition-all duration-300;
 }
 
-.neon-glow-blue {
-  box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
-}
-
-/* Custom Scrollbar */
+/* Custom Scrollbar - Clean */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -119,13 +72,14 @@
   @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
 }
 
-/* Recharts Customizations */
-.recharts-cartesian-grid-horizontal line,
-.recharts-cartesian-grid-vertical line {
-  stroke: rgba(255, 255, 255, 0.03);
+/* Stats Typography */
+.font-stats {
+  font-family: var(--font-ibm-plex-mono);
+  letter-spacing: -0.05em;
 }
 
-.recharts-tooltip-cursor {
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-dasharray: 4 4;
+@layer utilities {
+  .text-shadow-sm {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
 }
