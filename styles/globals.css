@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background:         220 14% 6%;     /* #0A0C10 */
+    --foreground:         225 18% 91%;    /* #E8EAF0 */
+
+    --card:               225 13% 10%;   /* #111318 */
+    --card-foreground:    225 18% 91%;   /* #E8EAF0 */
+
+    --popover:            225 15% 12%;   /* #161A22 */
+    --popover-foreground: 225 18% 91%;   /* #E8EAF0 */
+
+    --primary:            162 100% 42%;  /* #00D4A0 — teal green */
+    --primary-foreground: 220 14% 6%;    /* dark text on green */
+
+    --secondary:          225 15% 14%;   /* #1E2330 */
+    --secondary-foreground: 225 10% 60%; /* #6B7280 */
+
+    --muted:              225 15% 14%;   /* #1E2330 */
+    --muted-foreground:   225 10% 45%;   /* #6B7280 */
+
+    --accent:             225 15% 16%;   /* #1E2330 hover */
+    --accent-foreground:  225 18% 91%;   /* #E8EAF0 */
+
+    --destructive:        0 100% 62%;    /* #FF4040 — critical red */
+    --destructive-foreground: 0 0% 100%;
+
+    --border:             225 20% 17%;   /* #1E2330 */
+    --input:              225 20% 17%;   /* #1E2330 */
+    --ring:               162 100% 42%;  /* #00D4A0 focus ring */
+
+    --radius: 0.5rem;
+
+    /* Extended semantic tokens */
+    --color-warning:        #FFB547;
+    --color-warning-dim:    rgba(255, 181, 71, 0.12);
+    --color-orange:         #FF8C00;
+    --color-orange-dim:     rgba(255, 140, 0, 0.12);
+    --color-info:           #4D9FFF;
+    --color-info-dim:       rgba(77, 159, 255, 0.12);
+    --color-success:        #00D4A0;
+    --color-success-dim:    rgba(0, 212, 160, 0.12);
+    --color-critical:       #FF4040;
+    --color-critical-dim:   rgba(255, 64, 64, 0.12);
+
+    /* Provider colors */
+    --color-aws:            #FF9900;
+    --color-gcp:            #4285F4;
+    --color-azure:          #0078D4;
+
+    /* Surface layers */
+    --surface-1:            #0A0C10;
+    --surface-2:            #111318;
+    --surface-3:            #161A22;
+    --surface-4:            #1E2330;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
