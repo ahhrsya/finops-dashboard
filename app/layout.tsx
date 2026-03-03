@@ -1,23 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Syne, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import { AppShell } from "@/components/app-shell";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const syne = Syne({
+const inter = Inter({
     subsets: ["latin"],
-    weight: ["600", "700", "800"],
-    variable: "--font-syne"
-});
-const dmSans = DM_Sans({
-    subsets: ["latin"],
-    weight: ["300", "400", "500"],
-    variable: "--font-dm-sans"
-});
-const ibmPlexMono = IBM_Plex_Mono({
-    subsets: ["latin"],
-    weight: ["400", "500", "600"],
-    variable: "--font-ibm-plex-mono"
+    variable: "--font-inter",
+    display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -32,7 +21,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="dark">
-            <body className={`${dmSans.variable} ${syne.variable} ${ibmPlexMono.variable} font-sans antialiased`}>
+            <body className={`${inter.variable} font-sans antialiased text-foreground bg-black`}>
                 <AppShell>
                     {children}
                 </AppShell>
