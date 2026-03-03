@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link"
 import { mockKpis, mockAlerts, mockServiceBreakdown, mockChartData } from "@/lib/mock-data"
 import { KpiCard } from "@/components/kpi-card"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
@@ -128,7 +129,12 @@ export default function DashboardPage() {
                                 </div>
                                 <div className="text-right">
                                     <p className="text-xs font-mono text-muted-foreground">{alert.detected} ago</p>
-                                    <button className="text-xs font-sans text-primary opacity-0 group-hover:opacity-100 transition-opacity">Investigate →</button>
+                                    <Link
+                                        href={`/alerts/${alert.id}`}
+                                        className="text-xs font-sans text-primary opacity-0 group-hover:opacity-100 transition-opacity hover:underline"
+                                    >
+                                        Investigate →
+                                    </Link>
                                 </div>
                             </div>
                         ))}

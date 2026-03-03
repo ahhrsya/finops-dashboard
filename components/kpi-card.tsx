@@ -24,9 +24,9 @@ export function KpiCard({ label, value, unit, change, status, className }: KpiCa
                     {label}
                 </p>
                 <div className="flex items-baseline gap-1">
-                    <p className="text-2xl font-display font-bold">
-                        {typeof value === 'number' ? formatCost(value) : value}
-                        {unit && <span className="text-sm ml-0.5">{unit}</span>}
+                    <p className="text-2xl font-mono font-bold">
+                        {typeof value === 'number' && unit !== '%' ? formatCost(value) : value}
+                        {unit && <span className="text-sm font-sans ml-0.5 text-muted-foreground">{unit}</span>}
                     </p>
                 </div>
                 {change !== null && change !== undefined && (

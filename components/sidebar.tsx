@@ -36,12 +36,12 @@ export function Sidebar() {
             "hidden md:flex shrink-0 flex-col border-r border-border bg-card w-14 xl:w-[200px] transition-all duration-200"
         )}>
             {/* Logo */}
-            <div className="h-14 flex items-center px-4 border-b border-border shrink-0">
+            <Link href="/" className="h-14 flex items-center px-4 border-b border-border shrink-0 hover:bg-accent/50 transition-colors">
                 <div className="h-6 w-6 rounded bg-primary flex items-center justify-center mr-3 shrink-0">
                     <div className="h-3 w-3 bg-primary-foreground transform rotate-45" />
                 </div>
                 <span className="font-display font-bold text-primary hidden xl:block">FinOps</span>
-            </div>
+            </Link>
 
             {/* Nav items */}
             <nav className="flex-1 p-2 space-y-1">
