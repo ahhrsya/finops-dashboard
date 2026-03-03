@@ -4,7 +4,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
     LayoutDashboard,
-    BellRing,
     ShieldAlert,
     Activity,
     Database,
@@ -13,9 +12,11 @@ import {
     Layers,
     FileText,
     User,
-    LogOut
+    LogOut,
+    ChevronRight
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 
 const navItems = [
     { icon: LayoutDashboard, label: "Overview", href: "/" },
@@ -38,7 +39,7 @@ export function Sidebar() {
             {/* Logo */}
             <Link href="/" className="h-20 flex items-center px-6 mb-6 mt-2 shrink-0 group">
                 <div className="h-9 w-9 rounded-xl bg-blue-600 flex items-center justify-center mr-3 shrink-0 shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
-                    <div className="h-3.5 w-3.5 bg-white rounded-sm" />
+                    <div className="h-4 w-4 bg-white rounded-sm" />
                 </div>
                 <span className="font-bold text-lg tracking-tight hidden xl:block text-white">FinOps</span>
             </Link>
@@ -48,24 +49,26 @@ export function Sidebar() {
                 {navItems.map((item) => {
                     const isActive = pathname === item.href
                     return (
-                        <Link
-                            key={item.href}
-                            href={item.href}
-                            className={cn(
-                                "flex items-center gap-3.5 px-3 py-2.5 rounded-xl transition-all duration-200 group relative",
-                                isActive
-                                    ? "bg-blue-600/10 text-blue-400"
-                                    : "text-muted-foreground hover:bg-white/[0.03] hover:text-foreground"
-                            )}
-                        >
-                            <item.icon className={cn(
-                                "h-[18px] w-[18px] shrink-0 transition-transform duration-200 group-hover:scale-110",
-                                isActive ? "text-blue-500" : "text-muted-foreground group-hover:text-white"
-                            )} />
-                            <span className="hidden xl:block font-medium text-[13px] tracking-tight">{item.label}</span>
-                            {isActive && (
-                                <div className="absolute left-0 w-1 h-5 bg-blue-600 rounded-full xl:hidden shadow-glow" />
-                            )}
+                        <Link key={item.href} href={item.href}>
+                            <Button
+                                variant="ghost"
+                                className={cn(
+                                    "w-full justify-start gap-4 px-3 py-6 rounded-xl transition-all duration-200 group relative",
+                                    isActive
+                                        ? "bg-blue-600/10 text-blue-400 hover:bg-blue-600/15 hover:text-blue-300"
+                                        : "text-muted-foreground hover:bg-white/[0.03] hover:text-white"
+                                )}
+                            >
+                                <item.icon className={cn(
+                                    "h-[18px] w-[18px] shrink-0 transition-transform duration-200 group-hover:scale-110",
+                                    isActive ? "text-blue-500" : "text-muted-foreground"
+                                )} />
+                                <span className="hidden xl:block font-bold text-[13px] tracking-tight">{item.label}</span>
+                                {isActive && (
+                                    <div className="absolute left-0 w-1 h-5 bg-blue-600 rounded-full xl:hidden" />
+                                )}
+                                {isActive && <ChevronRight className="hidden xl:block h-3.5 w-3.5 ml-auto opacity-40" />}
+                            </Button>
                         </Link>
                     )
                 })}
@@ -79,7 +82,7 @@ export function Sidebar() {
                     </div>
                     <div className="hidden xl:block overflow-hidden">
                         <p className="text-[12px] font-bold text-white truncate leading-none mb-1">Alex Rivera</p>
-                        <p className="text-[10px] text-muted-foreground truncate uppercase font-medium tracking-tight">FinOps Lead</p>
+                        <p className="text-[10px] text-muted-foreground truncate uppercase font-bold tracking-tight opacity-50">FinOps Lead</p>
                     </div>
                     <button className="ml-auto hidden xl:block p-1.5 hover:bg-white/5 rounded-lg text-muted-foreground hover:text-rose-400 transition-colors">
                         <LogOut className="h-4 w-4" />
