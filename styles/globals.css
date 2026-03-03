@@ -4,58 +4,28 @@
 
 @layer base {
   :root {
-    --background:         220 14% 6%;     /* #0A0C10 */
-    --foreground:         225 18% 91%;    /* #E8EAF0 */
-
-    --card:               225 13% 10%;   /* #111318 */
-    --card-foreground:    225 18% 91%;   /* #E8EAF0 */
-
-    --popover:            225 15% 12%;   /* #161A22 */
-    --popover-foreground: 225 18% 91%;   /* #E8EAF0 */
-
-    --primary:            162 100% 42%;  /* #00D4A0 — teal green */
-    --primary-foreground: 220 14% 6%;    /* dark text on green */
-
-    --secondary:          225 15% 14%;   /* #1E2330 */
-    --secondary-foreground: 225 10% 60%; /* #6B7280 */
-
-    --muted:              225 15% 14%;   /* #1E2330 */
-    --muted-foreground:   225 10% 45%;   /* #6B7280 */
-
-    --accent:             225 15% 16%;   /* #1E2330 hover */
-    --accent-foreground:  225 18% 91%;   /* #E8EAF0 */
-
-    --destructive:        0 100% 62%;    /* #FF4040 — critical red */
-    --destructive-foreground: 0 0% 100%;
-
-    --border:             225 20% 17%;   /* #1E2330 */
-    --input:              225 20% 17%;   /* #1E2330 */
-    --ring:               162 100% 42%;  /* #00D4A0 focus ring */
-
-    --radius: 0.5rem;
-
-    /* Extended semantic tokens */
-    --color-warning:        #FFB547;
-    --color-warning-dim:    rgba(255, 181, 71, 0.12);
-    --color-orange:         #FF8C00;
-    --color-orange-dim:     rgba(255, 140, 0, 0.12);
-    --color-info:           #4D9FFF;
-    --color-info-dim:       rgba(77, 159, 255, 0.12);
-    --color-success:        #00D4A0;
-    --color-success-dim:    rgba(0, 212, 160, 0.12);
-    --color-critical:       #FF4040;
-    --color-critical-dim:   rgba(255, 64, 64, 0.12);
-
-    /* Provider colors */
-    --color-aws:            #FF9900;
-    --color-gcp:            #4285F4;
-    --color-azure:          #0078D4;
-
-    /* Surface layers */
-    --surface-1:            #0A0C10;
-    --surface-2:            #111318;
-    --surface-3:            #161A22;
-    --surface-4:            #1E2330;
+    --background: 240 10% 2%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 2%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 322 100% 50%;
+    /* Neon Magenta */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 217 91% 60%;
+    /* Vibrant Blue */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5% 12%;
+    --input: 240 5% 12%;
+    --ring: 322 100% 50%;
+    --radius: 1.25rem;
   }
 }
 
@@ -63,7 +33,99 @@
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-[#000000] text-foreground overflow-x-hidden antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+/* Animations */
+@keyframes alert-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-alert-pulse {
+  animation: alert-pulse 2s infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+/* Background Bloom */
+.bg-bloom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 0, 128, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 200, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(100, 50, 255, 0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Premium Effects */
+.glass-card {
+  @apply bg-[#111318]/40 backdrop-blur-2xl border border-white/5;
+}
+
+.neon-glow-pink {
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.2);
+}
+
+.neon-glow-blue {
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
+
+/* Recharts Customizations */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255, 255, 255, 0.03);
+}
+
+.recharts-tooltip-cursor {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-dasharray: 4 4;
 }
